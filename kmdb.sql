@@ -49,14 +49,165 @@
 -- - Follow best practices for table and column names
 -- - Use correct data column types (i.e. TEXT/INTEGER)
 -- - Use of the `model_id` naming convention for foreign key columns
+
+DROP TABLE IF EXISTS movies;
+CREATE TABLE movies (
+	movie_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	title TEXT,
+	year_released INTEGER,
+    MPAA_rating TEXT, 
+    studio_id INTEGER);
+
+DROP TABLE IF EXISTS studios;
+CREATE TABLE studios (
+    studio_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    studio_name);
+
+DROP TABLE IF EXISTS actors;
+CREATE TABLE actors (
+    actor_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    actorname TEXT);
+
+DROP TABLE IF EXISTS castgroups;
+CREATE TABLE castgroups (
+    castgroup_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER,
+    actor_id INTEGER,
+    actorname TEXT,
+    character_name TEXT);
+
+
 -- 3. Insertion of data (INSERT statements) - 4 points
 -- - Insert data into all the tables you've created
 -- - It actually works, i.e. proper INSERT syntax
+
+
+-- Inserting Movie Data
+
+INSERT INTO movies ("title", "year_released", "MPAA_rating", "studio_id") 
+    VALUES 
+    ("Batman Begins",
+    "2005", "PG-13", "1");
+
+INSERT INTO movies ("title", "year_released", "MPAA_rating", "studio_id") 
+    VALUES 
+    ("The Dark Knight",
+    "2008", "PG-13", "1");
+
+INSERT INTO movies ("title", "year_released", "MPAA_rating", "studio_id") 
+    VALUES 
+    ("The Dark Knight Rises",
+    "2012", "PG-13", "1");
+
+-- Inserting Actor Data 
+
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Christian Bale");
+
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Michael Caine");
+
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Liam Neeson");
+
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Katie Holmes");
+
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Gary Oldman");
+
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Heath Ledger");
+
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Aaron Eckhart");
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Maggie Gyllenhaal");
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Tom Hardy");
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Joseph Gordon-Levitt");
+INSERT INTO actors ("actorname")
+    VALUES
+    ("Anne Hathaway");
+
+--Inserting Studio Data
+
+INSERT INTO studios ("studio_name")
+    VALUES
+    ("Warner Bros.");
+
+-- Inserting Castgroup Data
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname", "character_name") 
+    VALUES
+    ("1","1","Christian Bale", "Bruce Wayne");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("1","2","Michael Caine","Alfred");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("1","3","Liam Neeson","Ra's Al Ghul");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("1","4","Katie Holmes","Rachel Dawes");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("1","5","Gary Oldman","Commissioner Gordon");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("2","6","Heath Ledger","Joker");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("2","7","Aaron Eckhart","Harvey Dent");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("2","8"," Maggie Gyllenhaa","Rachel Dawes");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("3","9","Tom Hardy","Bane");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("3","10","Joseph Gordon-Levitt","John Blake");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("3","11","Anne Hathaway","Selina Kyle");
+
+
+
 -- 4. "The report" (SELECT statements) - 6 points
 -- - Write 2 `SELECT` statements to produce something similar to the
 --   sample output below - 1 for movies and 1 for cast. You will need
 --   to read data from multiple tables in each `SELECT` statement.
 --   Formatting does not matter.
+
+.print "Movies"
+SELECT title, year_released, MPAA_rating, studio_name
+    FROM movies INNER JOIN studios ON studios.studio_id=movies.studio_id;
+
+.print "Top Cast"
+SELECT title, actorname, character_name 
+    FROM movies INNER JOIN castgroups ON movies.movie_id = castgroups.movie_id;
 
 -- Submission
 -- 
