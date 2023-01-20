@@ -202,10 +202,17 @@ INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name")
 --   Formatting does not matter.
 
 .print "Movies"
+.print "======"
+.print ""
 SELECT title, year_released, MPAA_rating, studio_name
     FROM movies INNER JOIN studios ON studios.studio_id=movies.studio_id;
 
+.print ""
+.print ""
+
 .print "Top Cast"
+.print "======"
+.print ""
 SELECT title, actorname, character_name 
     FROM movies INNER JOIN castgroups ON movies.movie_id = castgroups.movie_id;
 
@@ -260,20 +267,3 @@ SELECT title, actorname, character_name
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
 
--- Prints a header for the movies output
-.print "Movies"
-.print "======"
-.print ""
-
--- The SQL statement for the movies output
--- TODO!
-
--- Prints a header for the cast output
-.print ""
-.print "Top Cast"
-.print "========"
-.print ""
-
-
--- The SQL statement for the cast output
--- TODO!
