@@ -153,10 +153,21 @@ INSERT INTO castgroups ("movie_id", "actor_id", "actorname", "character_name")
     VALUES
     ("1","1","Christian Bale", "Bruce Wayne");
 
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname", "character_name") 
+    VALUES
+    ("2","1","Christian Bale", "Bruce Wayne");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname", "character_name") 
+    VALUES
+    ("3","1","Christian Bale", "Bruce Wayne");
+
 INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
     VALUES
     ("1","2","Michael Caine","Alfred");
 
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
+    ("2","2","Michael Caine","Alfred");
 INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
     VALUES
     ("1","3","Liam Neeson","Ra's Al Ghul");
@@ -171,6 +182,10 @@ INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name")
 
 INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
     VALUES
+    ("3","5","Gary Oldman","Commissioner Gordon");
+
+INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
+    VALUES
     ("2","6","Heath Ledger","Joker");
 
 INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
@@ -179,7 +194,7 @@ INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name")
 
 INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
     VALUES
-    ("2","8"," Maggie Gyllenhaa","Rachel Dawes");
+    ("2","8","Maggie Gyllenhaa","Rachel Dawes");
 
 INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name") 
     VALUES
@@ -216,7 +231,8 @@ SELECT title, year_released, MPAA_rating, studio_name
 .print "======"
 .print ""
 SELECT title, actorname, character_name 
-    FROM movies INNER JOIN castgroups ON movies.movie_id = castgroups.movie_id;
+    FROM movies INNER JOIN castgroups ON movies.movie_id = castgroups.movie_id
+    ORDER BY title;
 
 -- Submission
 -- 
