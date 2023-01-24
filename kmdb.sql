@@ -201,6 +201,8 @@ INSERT INTO castgroups ("movie_id", "actor_id", "actorname","character_name")
 --   to read data from multiple tables in each `SELECT` statement.
 --   Formatting does not matter.
 
+.mode columns
+
 .print "Movies"
 .print "======"
 .print ""
