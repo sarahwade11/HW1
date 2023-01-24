@@ -61,7 +61,7 @@ CREATE TABLE movies (
 DROP TABLE IF EXISTS studios;
 CREATE TABLE studios (
     studio_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    studio_name);
+    studio_name TEXT);
 
 DROP TABLE IF EXISTS actors;
 CREATE TABLE actors (
